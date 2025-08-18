@@ -8,8 +8,13 @@ import json
 
 def format_timestamp(timestamp_str):
     try:
-        dt = datetime.strptime(timestamp_str, '%Y-%m-%d %H:%M:%S')
-        return dt.strftime('%d/%m/%Y %H:%M:%S')
+        for fmt in ['%Y-%m-%d %H:%M:%S', '%d/%m/%Y %H:%M:%S', '%Y-%m-%d', '%d/%m/%Y']:
+            try:
+                dt = datetime.strptime(timestamp_str, fmt)
+                return dt.strftime('%d/%m/%Y')
+            except:
+                continue
+        return timestamp_str
     except:
         return timestamp_str
 
@@ -200,7 +205,7 @@ def show_history(username):
                     st.rerun()
     
     col1, col2 = st.columns(2)
-    filter_condition = col1.selectbox("Filter kondisi", ["Semua", "Sehat", "Keriting", "Menguning"])
+    filter_condition = col1.selectbox("Filter kondisi", ["All", "Healthy", "Curly", "Yellow"])
     sort_option = col2.selectbox("Urutkan", ["Terbaru", "Terlama", "Confidence Tinggi"])
     
     filtered_data = history_data
