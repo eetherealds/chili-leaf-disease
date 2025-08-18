@@ -180,7 +180,7 @@ def detect_disease():
             st.subheader("Hasil Analisis")
             if st.button("Analisis", use_container_width=True):
                 detection_time = datetime.now()
-                st.info(f"Waktu: {detection_time.strftime('%d/%m/%Y %H:%M:%S')}")
+                st.info(f"Waktu: {detection_time.strftime('%d/%m/%Y')}")
                 with st.spinner("Menganalisis..."):
                     try:
                         results = model(original_image, verbose=False)
@@ -209,7 +209,7 @@ def detect_disease():
                         )
                         st.progress(highest_confidence)
                         show_results(detection_counts, main_prediction, highest_confidence, all_detections)
-                        st.success(f"Tersimpan: {detection_time.strftime('%d/%m/%Y %H:%M:%S')}")
+                        st.success(f"Tersimpan: {detection_time.strftime('%d/%m/%Y')}")
                     except Exception as e:
                         st.error(f"Error: {str(e)}")
     else:
