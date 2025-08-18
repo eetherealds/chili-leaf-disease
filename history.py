@@ -205,7 +205,7 @@ def show_history(username):
                     st.rerun()
     
     col1, col2 = st.columns(2)
-    filter_condition = col1.selectbox("Filter kondisi", ["All", "Healthy", "Curly", "Yellow"])
+    filter_condition = col1.selectbox("Filter kondisi", ["Semua", "Sehat", "Keriting", "Menguning"])
     sort_option = col2.selectbox("Urutkan", ["Terbaru", "Terlama", "Confidence Tinggi"])
     
     filtered_data = history_data
